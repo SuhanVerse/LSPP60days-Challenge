@@ -3,9 +3,7 @@
 //     println!("Element: {}", v[99]); // panics: index out of bounds
 // }
 
-
 //------------------------------------------------------------------------------
-
 
 // fn fizzbuzz(n: i32) {
 //     if n < 1 {
@@ -18,9 +16,7 @@
 //     fizzbuzz(0); // will panic with your message
 // }
 
-
 //------------------------------------------------------------------------------
-
 
 // use std::fs::File;
 // use std::io::{self, Read};
@@ -39,9 +35,7 @@
 //     }
 // }
 
-
 //------------------------------------------------------------------------------
-
 
 // fn main() {
 //     // unwrap_or: return default on Err
@@ -60,11 +54,7 @@
 //     println!("{:?}", doubled); // Ok(14)
 // }
 
-
 //------------------------------------------------------------------------------
-
-
-// src/lib.rs or main.rs
 
 // /// Divides two numbers, returns Err if divisor is zero
 // pub fn divide(dividend: i32, divisor: i32) -> Result<i32, String> {
@@ -98,7 +88,22 @@
 //     }
 // }
 
-
 // ------------------------------------------------------------------------------
 
 
+use DAY_7::{divide, ensure_positive, read_data}; // import functions from lib.rs
+
+fn main() {
+    match read_data() {
+        Ok(text) => println!("Read data: {}", text),
+        Err(e) => eprintln!("Error: {}", e),
+    }
+
+    match divide(10, 0) {
+        Ok(v) => println!("10/2 = {}", v),
+        Err(msg) => println!("Divide error: {}", msg),
+    }
+
+    ensure_positive(5);
+    // ensure_positive(-1); // will panic
+}
