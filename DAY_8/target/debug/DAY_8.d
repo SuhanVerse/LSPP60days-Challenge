@@ -1,0 +1,1 @@
+/home/xlegion/RUST/ISPP60days-Challenge/DAY_8/target/debug/DAY_8: /home/xlegion/RUST/ISPP60days-Challenge/DAY_8/src/lib.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_8/src/main.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_8/src/math/mod.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_8/src/math/operations.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_8/src/utils.rs
