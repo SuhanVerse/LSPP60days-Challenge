@@ -1,0 +1,1 @@
+/home/xlegion/RUST/ISPP60days-Challenge/DAY_10/target/debug/DAY_10: /home/xlegion/RUST/ISPP60days-Challenge/DAY_10/src/main.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_10/src/math_generic.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_10/src/traits_demo.rs
