@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "LEARN I/O IN RUST",
+    "completed": true,
+    "created_at": "2025-06-11T16:05:17.433110186Z"
+  },
+  {
+    "id": 2,
+    "title": "LETS TEST THE RUST TODO CLI",
+    "completed": false,
+    "created_at": "2025-06-11T16:06:52.984879590Z"
+  }
+]
