@@ -1,0 +1,15 @@
+[package]
+name = "calclib"
+version = "0.1.0"
+edition = "2025"
+authors = ["Xenon62 <khsuhan100@email.com>"]
+license = "MIT OR Apache-2.0"
+description = "A simple math library with an optional fancy mode"
+readme = "README.md"
+repository = "https://github.com/Xenon62/calclib" # Replace with your repo
+keywords = ["math", "calculator", "fancy"]
+categories = ["science", "mathematics"]
+
+[features]
+default = []
+fancy = []
