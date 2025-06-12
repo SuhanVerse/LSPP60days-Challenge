@@ -20,8 +20,8 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-calclib_xrust = "0.1.0"
+xrust_calclib = "0.1.0"
 
 
 # with fancy output
-calclib = { version = "0.1.1", features = ["fancy"] }
+xrust_calclib = { version = "0.1.0", features = ["fancy"] }
