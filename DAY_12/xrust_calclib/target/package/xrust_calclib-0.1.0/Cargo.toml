@@ -14,6 +14,19 @@ edition = "2024"
 name = "xrust_calclib"
 version = "0.1.0"
 build = false
+exclude = [
+    "/target/*",
+    "*.png",
+    "*.jpg",
+    "*.mp4",
+    "*.pdf",
+    "/screenshots/*",
+    "/media/*",
+    "/large_data/*",
+    "/.vscode/*",
+    "*.zip",
+    "*.tar.gz",
+]
 autolib = false
 autobins = false
 autoexamples = false
@@ -21,12 +34,6 @@ autotests = false
 autobenches = false
 description = "A Rust calculator library with floating‐point arithmetic and error handling"
 readme = "README.md"
-keywords = [
-    "calculator",
-    "math",
-    "arithmetic",
-]
-categories = ["math"]
 license = "Apache-2.0"
 repository = "https://github.com/62Xenon/ISPP60days-Challenge/tree/main/DAY_12/xrust_calclib"
 
