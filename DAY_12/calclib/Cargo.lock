@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "calclib"
-version = "0.1.1"
+name = "calclib_rustx"
+version = "0.1.0"
