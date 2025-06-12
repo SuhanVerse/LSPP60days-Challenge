@@ -33,8 +33,4 @@ fancy = []
 name = "calclib"
 path = "src/lib.rs"
 
-[[bin]]
-name = "calclib"
-path = "src/main.rs"
-
 [dependencies]

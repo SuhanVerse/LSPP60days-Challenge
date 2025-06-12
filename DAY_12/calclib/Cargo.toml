@@ -1,7 +1,7 @@
 [package]
-name        = "calclib"
-version     = "0.1.1"       
-edition     = "2024"
+name        = "calclib_rustx"
+version     = "0.1.0"       
+edition     = "2021"
 authors     = ["Xenon62 <khsuhan100@example.com>"]
 license     = "Apache-2.0"
 description = "A simple math library with optional fancy output"
