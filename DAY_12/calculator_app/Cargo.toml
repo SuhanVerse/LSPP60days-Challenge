@@ -1,0 +1,7 @@
+[package]
+name = "calculator_app"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+xrust_calclib = "0.1.0"
