@@ -10,5 +10,11 @@
     "title": "LETS TEST THE RUST TODO CLI",
     "completed": false,
     "created_at": "2025-06-11T16:06:52.984879590Z"
+  },
+  {
+    "id": 3,
+    "title": "SUMOON",
+    "completed": true,
+    "created_at": "2025-06-12T05:32:20.290587961Z"
   }
 ]
