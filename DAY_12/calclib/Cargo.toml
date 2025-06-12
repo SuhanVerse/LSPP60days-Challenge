@@ -1,15 +1,15 @@
 [package]
-name = "calclib"
-version = "0.1.0"
-edition = "2025"
-authors = ["Xenon62 <khsuhan100@email.com>"]
-license = "MIT OR Apache-2.0"
-description = "A simple math library with an optional fancy mode"
-readme = "README.md"
-repository = "https://github.com/Xenon62/calclib" # Replace with your repo
-keywords = ["math", "calculator", "fancy"]
-categories = ["science", "mathematics"]
+name        = "calclib"
+version     = "0.1.1"       
+edition     = "2024"
+authors     = ["Xenon62 <khsuhan100@example.com>"]
+license     = "Apache-2.0"
+description = "A simple math library with optional fancy output"
+readme      = "README.md"
+repository  = "https://github.com/62Xenon/ISPP60days-Challenge/tree/28376da53e9e91eadbd184eeff70bd1ddf7f661c/DAY_12/calclib"
 
 [features]
 default = []
-fancy = []
+fancy   = []
+
+[dependencies]
