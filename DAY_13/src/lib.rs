@@ -1,4 +1,4 @@
-#![allow(unused_macros)]
+#![allow(non_snake_case)]
 
 /// Say hello.
 #[macro_export]
@@ -21,11 +21,7 @@ macro_rules! create_tuple {
 macro_rules! vec_of_strings {
     ( $( $s:expr ),* ) => {
         {
-            let mut v = Vec::new();
-            $(
-                v.push($s.to_string());
-            )*
-            v
+            vec![$( $s.to_string() ),*]
         }
     };
 }
@@ -37,12 +33,14 @@ macro_rules! log {
         println!(concat!("[", stringify!($level), "] {}"), $msg);
     };
     ($msg:expr) => {
-        log!(INFO, $msg);
+        $crate::log!(INFO, $msg);
     };
 }
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
     fn demo_macros() {
         say_hello!();
