@@ -1,0 +1,7 @@
+[package]
+name = "DAY_17"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+day17_unsafe_ffi = { path = "../day17_unsafe_ffi" }
