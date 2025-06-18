@@ -1,2 +1,0 @@
-cargo:rustc-link-search=native=../c_lib
-cargo:rustc-link-lib=dylib=adder

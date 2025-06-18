@@ -1,8 +1,0 @@
-[package]
-name = "day17_unsafe_ffi"
-version = "0.1.0"
-edition = "2024"
-build = "build.rs"   # 👈 Add this
-
-[lib]
-crate-type = ["rlib", "cdylib"]
