@@ -1,0 +1,10 @@
+cargo:rustc-check-cfg=cfg(armv6m)
+cargo:rustc-check-cfg=cfg(armv7m)
+cargo:rustc-check-cfg=cfg(armv8m)
+cargo:rustc-check-cfg=cfg(cortex_m)
+cargo:rustc-check-cfg=cfg(has_fpu)
+cargo:rustc-cfg=cortex_m
+cargo:rustc-cfg=armv7m
+cargo:rustc-link-search=/home/xlegion/RUST/ISPP60days-Challenge/DAY_19/blink_qemu/target/thumbv7m-none-eabi/release/build/cortex-m-rt-9b1140c096117ec4/out
+cargo:rerun-if-changed=build.rs
+cargo:rerun-if-changed=link.x.in
