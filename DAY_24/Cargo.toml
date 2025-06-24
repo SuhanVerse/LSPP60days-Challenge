@@ -1,0 +1,23 @@
+[package]
+name = "DAY_24"
+version = "0.1.0"
+edition = "2021"
+authors = ["Me"]
+
+[dependencies]
+cortex-m              = "0.7"
+cortex-m-rt           = "0.6.15"     # matches stm32f1xx-hal 0.7
+panic-halt            = "0.2"
+stm32f1xx-hal         = { version = "0.7", features = ["stm32f103", "rt"] }
+cortex-m-semihosting  = "0.5"
+embedded-hal          = "0.2"
+
+
+[[bin]]
+name = "DAY_24"
+path = "src/main.rs"
+
+[profile.release]
+codegen-units = 1
+debug         = true
+lto           = true
