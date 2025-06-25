@@ -1,5 +1,0 @@
-[build]
-target = "avr-atmega328p.json"
-
-[target.avr-atmega328p.json]
-runner = "avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 57600 -U flash:w:target/avr-atmega328p/release/DAY_25.hex:e"
