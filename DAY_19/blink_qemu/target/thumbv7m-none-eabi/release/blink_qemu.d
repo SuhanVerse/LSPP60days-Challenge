@@ -1,1 +1,0 @@
-/home/xlegion/RUST/ISPP60days-Challenge/DAY_19/blink_qemu/target/thumbv7m-none-eabi/release/blink_qemu: /home/xlegion/RUST/ISPP60days-Challenge/DAY_19/blink_qemu/build.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_19/blink_qemu/src/main.rs
