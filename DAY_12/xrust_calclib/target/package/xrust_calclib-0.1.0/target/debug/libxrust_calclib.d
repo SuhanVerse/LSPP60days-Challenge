@@ -1,1 +1,0 @@
-/home/xlegion/RUST/ISPP60days-Challenge/DAY_12/xrust_calclib/target/package/xrust_calclib-0.1.0/target/debug/libxrust_calclib.rlib: /home/xlegion/RUST/ISPP60days-Challenge/DAY_12/xrust_calclib/target/package/xrust_calclib-0.1.0/src/lib.rs

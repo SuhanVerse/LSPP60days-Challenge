@@ -1,1 +1,0 @@
-/home/xlegion/RUST/ISPP60days-Challenge/DAY_20/final_web_server/target/release/final_web_server: /home/xlegion/RUST/ISPP60days-Challenge/DAY_20/final_web_server/src/lib.rs /home/xlegion/RUST/ISPP60days-Challenge/DAY_20/final_web_server/src/main.rs
