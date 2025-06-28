@@ -1,0 +1,29 @@
+[package]
+name = "day-28"
+version = "0.1.0"
+edition = "2021"
+authors = ["62Xenon <khsuhan100@gmail.com>"]
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "day-28"
+path = "src/main.rs"
+
+[dependencies]
+panic-halt   = "1.0.0"
+ufmt         = "0.2.0"
+nb           = "1.1.0"
+embedded-hal = "1.0"
+avr-device   = { version = "0.7", features = ["atmega328p"] }
+
+[dependencies.arduino-hal]
+git      = "https://github.com/Rahix/avr-hal.git"
+rev      = "fafaf587a32a4500239fd073f89d1b9c36b48092"
+features = ["arduino-uno"]
+
+[profile.release]
+panic         = "abort"
+codegen-units = 1
+debug         = true
+lto           = true
+opt-level     = "s"
