@@ -1,34 +1,33 @@
 #![no_std]
 #![no_main]
 #![feature(abi_avr_interrupt)]
-#![allow(static_mut_refs)]
+#![allow(static_mut_refs, unused_unsafe)]
 
 use arduino_hal::{entry, pac};
 use avr_device::asm::sleep;
 use panic_halt as _;
 
-// Shared LED handle for ISR
+// Shared LED for ISR toggle
 static mut LED: Option<
     arduino_hal::hal::port::Pin<arduino_hal::hal::port::mode::Output, arduino_hal::hal::port::PB5>,
 > = None;
 
 #[entry]
 fn main() -> ! {
-    // 1) Take peripherals, split pins
+    // 1) Grab peripherals
     let dp = pac::Peripherals::take().unwrap();
     let pins = arduino_hal::pins!(dp);
 
-    // 2) Init serial at 57600 baud to match ravedude console
-    let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
-
-    ufmt::uwriteln!(&mut serial, "Day 29: ready for '#'\r").ok();
+    // 2) Serial @ 9600 for debug messages
+    let mut serial = arduino_hal::default_serial!(dp, pins, 9600);
+    ufmt::uwriteln!(&mut serial, "Day 29: ready for '#' key").ok();
 
     // 3) LED on D13
     let mut led = pins.d13.into_output();
     led.set_low();
     unsafe { LED = Some(led) };
 
-    // 4) Keypad rows as outputs, idle HIGH
+    // 4) Keypad rows: only row3 (D6) low → this is the “#” row
     let mut row0 = pins.d9.into_output();
     row0.set_high();
     let mut row1 = pins.d8.into_output();
@@ -36,57 +35,51 @@ fn main() -> ! {
     let mut row2 = pins.d7.into_output();
     row2.set_high();
     let mut row3 = pins.d6.into_output();
-    row3.set_high();
+    row3.set_low();
 
-    // 5) Keypad columns as inputs w/ pull‑up
+    // 5) Keypad columns: col0=D5, col1=D4, col2=D2(INT0), col3=D3
     let _col0 = pins.d5.into_pull_up_input();
     let _col1 = pins.d4.into_pull_up_input();
-    let _col2 = pins.d3.into_pull_up_input(); // col2 (3,6,9,#)
-    let _col3 = pins.d2.into_pull_up_input(); // col3 (A,B,C,D) but we’ll treat d2 as INT0/#
+    let _col2 = pins.d2.into_pull_up_input(); // <- '#' wired here
+    let _col3 = pins.d3.into_pull_up_input(); // <- 'D' wired here
 
-    // 6) INT0 on falling edge (D2) for '#'
-    dp.EXINT.eicra.write(|w| w.isc0().bits(0b10));
+    // 6) Configure INT0 on falling edge (D2)
+    dp.EXINT.eicra.write(|w| w.isc0().bits(0b10)); // ISC01=1, ISC00=0
     dp.EXINT.eimsk.write(|w| w.int0().set_bit());
 
-    // 7) Timer2 CTC @ ~1 Hz heartbeat
+    // 7) Timer2 heartbeat @1Hz
     dp.TC2.tccr2a.write(|w| w.wgm2().ctc());
     dp.TC2.tccr2b.write(|w| w.cs2().prescale_1024());
-    dp.TC2.ocr2a.write(|w| w.bits(156));
+    dp.TC2.ocr2a.write(|w| w.bits(156)); // ≈1Hz
     dp.TC2.timsk2.write(|w| w.ocie2a().set_bit());
 
-    // 8) Enable global interrupts
+    // 8) Enable interrupts and sleep forever
     unsafe { avr_device::interrupt::enable() };
-
-    // 9) Sleep loop
     loop {
-        sleep();
-        // you could also print here, but keep RTS low
+        sleep()
     }
 }
 
-/// Heartbeat blink (Timer2)
+// 1Hz heartbeat toggle
 #[avr_device::interrupt(atmega328p)]
 fn TIMER2_COMPA() {
     unsafe {
-        LED.as_mut().unwrap().toggle();
+        LED.as_mut().map(|led| led.toggle());
     }
 }
 
-/// Wake on '#' (INT0)
+
 #[avr_device::interrupt(atmega328p)]
 fn INT0() {
-    // Toggle LED and print "WAKE "
     unsafe {
-        if let Some(led) = LED.as_mut() {
-            led.toggle();
-        }
+        LED.as_mut().map(|led| led.toggle());
     }
-    // Serial lives in main, so use a static buffer & direct write
-    // Borrow a new serial instance here:
+
+  
     let dp = unsafe { pac::Peripherals::steal() };
     let pins = unsafe { arduino_hal::pins!(dp) };
-    let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
-    ufmt::uwrite!(&mut serial, "WAKE ").ok();
+    let mut serial = arduino_hal::default_serial!(dp, pins, 9600);
+    ufmt::uwriteln!(&mut serial, "WAKE").ok();
 }
 
 //_____________________________________________________________________________________________
