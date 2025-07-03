@@ -1,0 +1,5 @@
+# Hide the top-level Makefile from language stats
+Makefile linguist-vendored
+
+# (Optional) Hide all .mk files too
+*.mk      linguist-vendored
