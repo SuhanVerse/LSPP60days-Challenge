@@ -1,5 +1,9 @@
-# Hide the top-level Makefile from language stats
+# ──────────────────────────────────────────────────────────────────────────────
+# Hide Makefiles and any *.mk from language statistics
 Makefile linguist-vendored
-
-# (Optional) Hide all .mk files too
 *.mk      linguist-vendored
+
+# (Optional) If you have C headers or other files you’d like to ignore:
+# *.h       linguist-vendored
+# docs/**  linguist-vendored
+# ──────────────────────────────────────────────────────────────────────────────
