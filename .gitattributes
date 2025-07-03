@@ -1,9 +1,8 @@
 # ──────────────────────────────────────────────────────────────────────────────
-# Hide Makefiles and any *.mk from language statistics
-Makefile linguist-vendored
-*.mk      linguist-vendored
+# Hide the build artifacts directory from language stats
+target/** linguist-vendored
 
-# (Optional) If you have C headers or other files you’d like to ignore:
-# *.h       linguist-vendored
-# docs/**  linguist-vendored
+# Also hide Makefile
+Makefile   linguist-vendored
+*.mk       linguist-vendored
 # ──────────────────────────────────────────────────────────────────────────────
