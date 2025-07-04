@@ -3,13 +3,13 @@
 Welcome to the **ISPP60days‑Challenge** repository!  
 This is a 60‑day technical journey exploring two key domains:
 
-- **Days 1–30**: Embedded Rust on ARM Cortex‑M and AVR (Arduino Uno)  
-- **Days 31–60**: Python‑based AI, Machine Learning, and Deep Learning  
+- **Days 1–30**: Embedded Rust on ARM Cortex‑M and AVR (Arduino Uno)
+- **Days 31–60**: Python‑based AI, Machine Learning, and Deep Learning
 
 ---
 
 [![Crates.io](https://img.shields.io/crates/v/xrust_calclib.svg)](https://crates.io/crates/xrust_calclib)  
-**xrust_calclib** — A simple Rust calculator library with add, sub, mul, div, and error handling  
+**xrust_calclib** — A simple Rust calculator library with add, sub, mul, div, and error handling
 
 ```bash
 cargo add xrust_calclib
@@ -19,7 +19,7 @@ cargo add xrust_calclib
 
 ```
 ├── DAY_01 … DAY_24       # ARM Cortex‑M embedded Rust (QEMU, PAC, HAL, RTIC, timers)
-├── DAY_25 … DAY_30       # AVR/Arduino Uno: interrupts, keypad, servo, power‑saving
+├── DAY_25 … day-30       # AVR/Arduino Uno: interrupts, keypad, servo, power‑saving
 ├── day_31 … day_60       # Python AI/ML journey (data prep, ML, DL, CLI/UI)
 ├── .gitignore            # Ignore build artifacts, venv, target directories
 ├── Cargo.toml            # Embedded Rust workspace settings
@@ -31,18 +31,18 @@ cargo add xrust_calclib
 ### Embedded Rust (Days 1–30)
 
 - **Rust toolchain 1.87+**:
-   ```bash
-   rustup component add rustfmt clippy
-   rustup target add thumbv7m-none-eabi thumbv7em-none-eabihf
-   ```
+  ```bash
+  rustup component add rustfmt clippy
+  rustup target add thumbv7m-none-eabi thumbv7em-none-eabihf
+  ```
 - **QEMU** for Cortex‑M emulation
 - **On‑chip debugging**: probe‑rs, OpenOCD, or GDB
 
 - **AVR support (Arduino Uno)**:
-   ```bash
-   rustup override set nightly
-   cargo install ravedude cargo-generate
-   ```
+  ```bash
+  rustup override set nightly
+  cargo install ravedude cargo-generate
+  ```
 
 ### Python AI/ML (Days 31–60)
 
