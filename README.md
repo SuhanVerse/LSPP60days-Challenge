@@ -17,7 +17,7 @@ cargo add xrust_calclib
 
 ## 📁 Repository Structure
 
-```
+```text
 ├── DAY_01 … DAY_24       # ARM Cortex‑M embedded Rust (QEMU, PAC, HAL, RTIC, timers)
 ├── DAY_25 … day-30       # AVR/Arduino Uno: interrupts, keypad, servo, power‑saving
 ├── day_31 … day_60       # Python AI/ML journey (data prep, ML, DL, CLI/UI)
@@ -31,14 +31,17 @@ cargo add xrust_calclib
 ### Embedded Rust (Days 1–30)
 
 - **Rust toolchain 1.87+**:
+
   ```bash
   rustup component add rustfmt clippy
   rustup target add thumbv7m-none-eabi thumbv7em-none-eabihf
   ```
+
 - **QEMU** for Cortex‑M emulation
 - **On‑chip debugging**: probe‑rs, OpenOCD, or GDB
 
 - **AVR support (Arduino Uno)**:
+
   ```bash
   rustup override set nightly
   cargo install ravedude cargo-generate
