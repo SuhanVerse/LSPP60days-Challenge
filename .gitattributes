@@ -1,14 +1,14 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # 1) Hide the build directory from language stats
 target/** linguist-vendored
-
 # 2) Hide Makefiles from language stats
 Makefile       linguist-vendored
 GNUmakefile    linguist-vendored
 makefile       linguist-vendored
 *.mk           linguist-vendored
-
 # 3) (Optional) If you ever vendor other deps or docs you want ignored:
 # vendor/**    linguist-vendored
 # docs/        linguist-vendored
 # ──────────────────────────────────────────────────────────────────────────────
+day-35/data/musicoset_songfeatures/lyrics.csv filter=lfs diff=lfs merge=lfs -text
+day-35/data/musicoset_songfeatures.zip filter=lfs diff=lfs merge=lfs -text
