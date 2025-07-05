@@ -10,5 +10,3 @@ makefile       linguist-vendored
 # vendor/**    linguist-vendored
 # docs/        linguist-vendored
 # ──────────────────────────────────────────────────────────────────────────────
-day-35/data/musicoset_songfeatures/lyrics.csv filter=lfs diff=lfs merge=lfs -text
-day-35/data/musicoset_songfeatures.zip filter=lfs diff=lfs merge=lfs -text
