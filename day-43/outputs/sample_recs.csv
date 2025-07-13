@@ -1,0 +1,26 @@
+query,track_name,artist,genre,score
+Sapphire,Shape of You,Ed Sheeran,Pop,0.6108652700525367
+Sapphire,Bad Habits,Ed Sheeran,Dance-pop,0.48563903020822285
+Sapphire,Don't Let Me Down,The Chainsmokers,Pop,0.07072680207410978
+Sapphire,Breath,Olly Alexander,Pop,0.06858751332047716
+Sapphire,Gangnam Style,Psy,K-pop,0.06858751332047716
+Don't Let Me Down,Hips Don’t Lie,Shakira ft. Wyclef Jean,Latin Pop,0.21643047676025212
+Don't Let Me Down,Sapphire,Ed Sheeran,Pop,0.07072680207410978
+Don't Let Me Down,Shape of You,Ed Sheeran,Pop,0.07072680207410978
+Don't Let Me Down,Breath,Olly Alexander,Pop,0.06341489582847477
+Don't Let Me Down,Gangnam Style,Psy,K-pop,0.06341489582847477
+Thunder,Imagine,John Lennon,Rock,0.3757966207532053
+Thunder,Bohemian Rhapsody,Queen,Rock,0.11963081158419142
+Thunder,Hotel California,Eagles,Rock,0.11963081158419142
+Thunder,Back in Black,AC/DC,Hard Rock,0.10749728167688405
+Thunder,STARMAN,David Bowie,Glam Rock,0.10514211889762345
+Uptown Funk,Sapphire,Ed Sheeran,Pop,0.0
+Uptown Funk,Don't Let Me Down,The Chainsmokers,Pop,0.0
+Uptown Funk,Thunder,Imagine Dragons,Rock,0.0
+Uptown Funk,Breath,Olly Alexander,Pop,0.0
+Uptown Funk,Old Town Road,Lil Nas X,Country Rap,0.0
+Breath,Sapphire,Ed Sheeran,Pop,0.06858751332047716
+Breath,Shape of You,Ed Sheeran,Pop,0.06858751332047716
+Breath,Don't Let Me Down,The Chainsmokers,Pop,0.06341489582847477
+Breath,Gangnam Style,Psy,K-pop,0.06149677187149891
+Breath,My Heart Will Go On,Celine Dion,Pop,0.06149677187149891

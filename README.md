@@ -112,7 +112,6 @@ pip install -r requirements.txt
 
 ## 🤝 Contributing
 
-- Open an issue or submit a PR for clarity, bug fixes, or new examples
 - Tweet daily updates with `#LSPPDayXX` and tag [@lftechnology](https://twitter.com/lftechnology)
 
 Happy hacking & learning! 🚀  
