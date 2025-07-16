@@ -2,3 +2,5 @@
 /**/*.rs.bk
 .vscode/
 *.swp
+/cenv
+requirements.txt
