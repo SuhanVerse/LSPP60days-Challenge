@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""
+day-48/models/fashion_cnn.py
+
+Train & evaluate a small CNN on Fashion‑MNIST using Keras:
+- Load Fashion‑MNIST from Keras
+- Subsample train/test sets for speed
+- Normalize pixel values and reshape
+- Define a lightweight CNN
+- Train with validation split
+- Plot & save loss/accuracy curves and sample predictions
+- Save the trained model
+"""
+
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# ─── Paths & Hyperparams ───────────────────────────────────────────────────────
+DAY_DIR     = os.path.dirname(os.path.dirname(__file__))
+PLOTS_DIR   = os.path.join(DAY_DIR, "plots")
+MODEL_DIR   = os.path.join(DAY_DIR, "models_output")
+MODEL_PATH  = os.path.join(MODEL_DIR, "fashion_cnn_small.h5")
+
+TRAIN_SAMPLES = 8000   # out of 60k
+TEST_SAMPLES  = 2000   # out of 10k
+BATCH_SIZE    = 64
+EPOCHS        = 5
+
+def ensure_dirs():
+    os.makedirs(PLOTS_DIR, exist_ok=True)
+    os.makedirs(MODEL_DIR, exist_ok=True)
+
+def load_and_preprocess():
+    # Load dataset
+    (x_train, y_train), (x_test, y_test) = tf.keras.datasets.fashion_mnist.load_data()
+    # Normalize & reshape to (H,W,1)
+    x_train = x_train.astype("float32")/255.0
+    x_test  = x_test.astype("float32")/255.0
+    x_train = np.expand_dims(x_train, -1)
+    x_test  = np.expand_dims(x_test,  -1)
+    # Subsample
+    x_train, y_train = x_train[:TRAIN_SAMPLES], y_train[:TRAIN_SAMPLES]
+    x_test,  y_test  = x_test[:TEST_SAMPLES],  y_test[:TEST_SAMPLES]
+    return (x_train, y_train), (x_test, y_test)
+
+def build_model():
+    model = models.Sequential([
+        layers.Conv2D(16, (3,3), activation="relu", input_shape=(28,28,1)),
+        layers.MaxPooling2D((2,2)),
+        layers.Conv2D(32, (3,3), activation="relu"),
+        layers.MaxPooling2D((2,2)),
+        layers.Flatten(),
+        layers.Dense(32, activation="relu"),
+        layers.Dense(10, activation="softmax")
+    ])
+    model.compile(
+        optimizer="adam",
+        loss="sparse_categorical_crossentropy",
+        metrics=["accuracy"]
+    )
+    return model
+
+def plot_history(hist):
+    # Loss
+    plt.figure(figsize=(5,3))
+    plt.plot(hist.history["loss"], label="train")
+    plt.plot(hist.history["val_loss"], label="val")
+    plt.title("Loss")
+    plt.xlabel("Epoch"); plt.ylabel("Loss")
+    plt.legend()
+    fn = os.path.join(PLOTS_DIR, "loss_curve.png")
+    plt.savefig(fn); plt.close()
+    print(f"Saved {fn}")
+
+    # Accuracy
+    plt.figure(figsize=(5,3))
+    plt.plot(hist.history["accuracy"], label="train")
+    plt.plot(hist.history["val_accuracy"], label="val")
+    plt.title("Accuracy")
+    plt.xlabel("Epoch"); plt.ylabel("Acc")
+    plt.legend()
+    fn = os.path.join(PLOTS_DIR, "acc_curve.png")
+    plt.savefig(fn); plt.close()
+    print(f"Saved {fn}")
+
+def plot_sample_preds(model, x_test, y_test, classes, n=9):
+    preds = model.predict(x_test[:n])
+    plt.figure(figsize=(6,6))
+    for i in range(n):
+        plt.subplot(3,3,i+1)
+        plt.imshow(x_test[i].squeeze(), cmap="gray")
+        plt.title(f"T:{classes[y_test[i]]}\nP:{classes[np.argmax(preds[i])]}")
+        plt.axis("off")
+    fn = os.path.join(PLOTS_DIR, "sample_preds.png")
+    plt.tight_layout()
+    plt.savefig(fn); plt.close()
+    print(f"Saved {fn}")
+
+def main():
+    ensure_dirs()
+    (x_tr, y_tr), (x_te, y_te) = load_and_preprocess()
+    print(f"Training on {len(x_tr)} samples, evaluating on {len(x_te)} samples.")
+
+    model = build_model()
+    model.summary()
+
+    # Train
+    hist = model.fit(
+        x_tr, y_tr,
+        epochs=EPOCHS,
+        batch_size=BATCH_SIZE,
+        validation_split=0.1,
+        verbose=2
+    )
+
+    # Evaluate
+    loss, acc = model.evaluate(x_te, y_te, verbose=0)
+    print(f"\nTest Acc: {acc:.3f}, Loss: {loss:.3f}")
+
+    # Visualize
+    plot_history(hist)
+    fashion_classes = [
+        "T‑shirt/top","Trouser","Pullover","Dress","Coat",
+        "Sandal","Shirt","Sneaker","Bag","Ankle boot"
+    ]
+    plot_sample_preds(model, x_te, y_te, fashion_classes)
+
+    # Save model
+    model.save(MODEL_PATH)
+    print(f"Saved model to {MODEL_PATH}")
+
+if __name__ == "__main__":
+    main()
