@@ -1,0 +1,11 @@
+
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+    environment:
+      - STREAMLIT_SERVER_RUN_ON_SAVE=true
