@@ -1,0 +1,62 @@
+#RK
+import numpy as np
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+
+f=lambda x,y: x-y
+f1=lambda x:x+3*np.exp(-x)-1
+
+x=0
+y=f1(0)
+print(y)
+
+x1=0
+x2=2
+n=20
+h=(x2-x1)/n
+
+def Euler(h,t,y):
+    k1=h*f(t,y)
+    y_next=y+k1
+    return y_next
+
+def Rk2(h,t,y):
+    k1=h*f(t,y)
+    k2=h*f(t+(h/2),y+(k1/2))
+    y_next=y+k2
+    return y_next
+
+def Rk4(h,t,y):
+    k1=h*f(t,y)
+    k2=h*f(t+(h/2),y+(k1/2))
+    k3=h*f(t+(h/2),y+(k2/2))
+    k4=h*f(t+(h),y+(k3/2))
+    y_next=y+(k1+2*k2+2*k3+k4)/6
+    return y_next
+
+t_values=np.linspace(x1,x2,n+1)
+t_values1=np.linspace(x1,x2,n+1)
+y_values_rk = dict()
+mse_values = dict()
+
+for method, name in [(Euler, 'RK1'), (Rk2, 'RK2'), (Rk4, 'RK4')]:
+    y_values = np.zeros(n+1)
+    y_values[0] = y
+    for i in range(n):
+        y_values[i+1] = method( h,t_values[i],y_values[i])
+    y_values_rk[name] = y_values
+    mse_values[name] = mean_squared_error(f1(t_values), y_values)
+
+
+plt.plot(t_values1, f1(t_values1), label='Exact', color='black', linestyle='--')
+
+for name, y_vals in y_values_rk.items():
+    plt.plot(t_values, y_vals, marker='o', label=name)
+
+plt.title("Comparison of RK Methods with Exact Solution")
+plt.xlabel("t")
+plt.ylabel("y")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
