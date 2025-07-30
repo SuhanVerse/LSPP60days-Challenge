@@ -1,10 +1,13 @@
-# Dockerfile
 FROM python:3.10-slim
 
-WORKDIR /app
+# Install system build tools needed for Cython extensions
+RUN apt-get update && \
+    apt-get install -y build-essential gcc g++ && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
+WORKDIR /app
 COPY requirements.txt .
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
