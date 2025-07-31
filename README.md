@@ -26,9 +26,11 @@ cargo add xrust_calclib
 └── README.md             # This document
 ```
 
+---
+
 ## 🛠️ Prerequisites
 
-### Embedded Rust (Days 1–30)
+### Embedded Rust Recap (Days 1–30)
 
 - **Rust toolchain 1.87+**:
 
@@ -47,68 +49,109 @@ cargo add xrust_calclib
   cargo install ravedude cargo-generate
   ```
 
-### Python AI/ML (Days 31–60)
+---
 
-- **Python >= 3.10**
-- **VS Code** with Python extension
-- **Recommended**: virtual environment (venv or conda)
+### Python AI/ML & Deployment (Days 31–60)
 
-## 🚀 How to Run
+- **Python 3.10+** (preferably in a virtual environment or Conda)
+- **Docker & Docker Compose**
+- **VS Code** or your preferred IDE
 
-### ARM (Days 1–24)
+---
 
-```bash
-cd DAY_21
-cargo run               # Builds & runs in QEMU
-
-# Optional debug:
-cargo run --target thumbv7m-none-eabi -- -S openocd.gdb
-```
-
-### AVR/Arduino (Days 25–30)
-
-```bash
-cargo generate --git https://github.com/Rahix/avr-hal-template.git
-cd day-25
-cargo run --release     # Flashes via ravedude & opens serial console
-```
-
-### Python AI/ML Phase (Days 31–60)
-
-- **Tools**: pandas, numpy, matplotlib, scikit-learn, tensorflow or pytorch, streamlit or flask
-
-```bash
-# Manage venv:
-python -m venv .venv && source .venv/bin/activate
-
-# Install dependencies:
-pip install -r requirements.txt
-```
-
-## 📝 Daily Highlights
+## 🚀 Getting Started
 
 ### Embedded Rust
 
-- **Days 1–14**: Blinky, `#![no_std]`, panic handlers, semihosting
-- **Days 15–24**: Linker scripts, PAC vs HAL, timers, RTIC, low‑power, debug/tracing
-- **Days 25–27**: Arduino Uno blinky, external interrupts, PAC & RTIC
-- **Days 28–30**: Timer1 PWM for servo, keypad scanning, capstone servo controller
+#### Example: Day 21 – Blink in QEMU
 
-### Python AI/ML (In Progress)
+```bash
+cd day_21
+cargo run
+```
 
-- **Day 31**: Python refresher (data types, control flow)
-- **Day 32**: Comprehensions & generators
-- **Day 33**: Pandas data cleaning
-- **Day 34**: Exploratory Data Analysis (histograms, scatter plots)
-- …through **Day 60**: ML models, deep learning, CLI & Streamlit demos
+**For AVR/Arduino (Days 25–30):**
 
-## 🔭 What’s Next?
+```bash
+# Generate template & flash
+cargo generate --git https://github.com/Rahix/avr-hal-template.git
+cd day-25
+cargo run --release
+```
 
-- Implement TF‑IDF and cosine similarity
-- Build scikit‑learn classifiers (regression, SVM, clustering)
-- Explore CNNs for image classification
-- Capstone: Music recommender with CLI & Streamlit UI
-- Deploy with Docker & Streamlit Cloud
+---
+
+### Python AI/ML Phase
+
+```bash
+# Create & activate virtualenv
+python -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run a daily script or notebook
+python day-34/eda.py
+```
+
+---
+
+### Dockerized FastAPI (Day 60)
+
+```bash
+# Build & run the container
+docker build -t lsp60-recommender:day60 -f day-60/Dockerfile .
+docker run -d -p 8000:8000 --name lsp60-api lsp60-recommender:day60
+
+# Health check
+curl http://localhost:8000/health
+```
+
+---
+
+## 🐳 Deployment
+
+- **Deploy with Docker & Streamlit Cloud** for easy sharing and production use.
+
+### 🐋 Docker Hub Images
+
+- **Recommender API:** [`xenon6230/recommender-api`](https://hub.docker.com/r/xenon6230/recommender-api)
+- **Sentiment Recommender:** [`xenon6230/sentiment-recommender`](https://hub.docker.com/r/xenon6230/sentiment-recommender)
+
+---
+
+## 📝 Daily Highlights
+
+### Embedded Rust (Days 1–30)
+
+- **Days 1–5**: Python refresher, control flow
+- **Days 6–14**: Cortex‑M `#![no_std]`, panic handlers, semihosting
+- **Days 15–24**: Linker scripts, PAC vs HAL, low‑power modes, tracing
+- **Days 25–27**: AVR external interrupts, keypad scanning, servo PWM
+- **Days 28–30**: Capstone – power‑optimized servo controller
+
+---
+
+### Python AI/ML & APIs (Days 31–60)
+
+- **Days 31–40**: Data cleaning, EDA, baseline ML, regression & classification
+- **Days 41–44**: TF‑IDF, sentiment analysis, content‑based recommender, evaluation
+- **Days 45–54**: Deep learning (MLP, CNN, text CNN), collaborative filtering (SVD, kNN)
+- **Days 55–58**: Hybrid recommender, NCF ranking & evaluation, BPR implementation
+- **Day 59**: FastAPI service to serve multiple recommenders
+- **Day 60**: Dockerize the API for production‑ready deployment
+
+---
+
+## 🚩 Next Milestones
+
+- Pin exact dependency versions (`pip freeze`) for reproducibility
+- CI/CD pipeline: automated Docker builds & tests
+- Deploy to cloud (e.g., AWS ECS, DigitalOcean App Platform)
+- Add unit & integration tests for each recommender endpoint
+
+---
 
 ## 🤝 Contributing
 
