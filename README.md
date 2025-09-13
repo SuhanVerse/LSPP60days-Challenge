@@ -1,9 +1,9 @@
-# 60‑Day Embedded Rust & AI/ML Leapfrog Challenge
+# 🚀 60‑Day Embedded Rust & AI/ML Leapfrog Challenge
 
 Welcome to the **LSPP60days‑Challenge** repository!  
 This is a 60‑day technical journey exploring two key domains:
 
-- **Days 1–30**: Embedded Rust on ARM Cortex‑M and AVR (Arduino Uno)
+- **Days 1–30**: Embedded Rust on ARM Cortex‑M and AVR (Arduino Uno)  
 - **Days 31–60**: Python‑based AI, Machine Learning, and Deep Learning
 
 ---
