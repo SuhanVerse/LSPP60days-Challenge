@@ -10,3 +10,57 @@ makefile       linguist-vendored
 # vendor/**    linguist-vendored
 # docs/        linguist-vendored
 # ──────────────────────────────────────────────────────────────────────────────
+
+# ================================
+# GitHub Linguist Overrides
+# ================================
+
+# --- Arduino ---
+*.ino linguist-language=Arduino
+
+# --- ROS2 / Robotics ---
+*.launch linguist-language=XML
+*.world linguist-language=XML
+*.urdf linguist-language=XML
+*.xacro linguist-language=XML
+*.msg linguist-language=ROS
+*.srv linguist-language=ROS
+*.action linguist-language=ROS
+
+# --- Python / Jupyter ---
+*.py linguist-language=Python
+*.ipynb linguist-language=Jupyter Notebook
+
+# --- Machine Learning / AI ---
+*.pbtxt linguist-language=Protobuf
+*.tflite linguist-language=FlatBuffers
+*.onnx linguist-language=ONNX
+*.h5 linguist-language=HDF5
+
+# --- Rust ---
+*.rs linguist-language=Rust
+Cargo.toml linguist-language=TOML
+Cargo.lock linguist-language=TOML
+
+# --- Shell / Scripts ---
+*.sh linguist-language=Shell
+*.bash linguist-language=Shell
+*.zsh linguist-language=Shell
+
+# --- Config / Data ---
+*.yaml linguist-language=YAML
+*.yml linguist-language=YAML
+*.json linguist-language=JSON
+*.toml linguist-language=TOML
+*.ini linguist-language=INI
+
+# --- Docker / DevOps ---
+Dockerfile linguist-language=Dockerfile
+*.dockerfile linguist-language=Dockerfile
+*.compose.yml linguist-language=YAML
+
+# --- Web / UI ---
+*.html linguist-language=HTML
+*.css linguist-language=CSS
+*.js linguist-language=JavaScript
+*.ts linguist-language=TypeScript
