@@ -75,7 +75,7 @@ cargo run
 ```bash
 # Generate template & flash
 cargo generate --git https://github.com/Rahix/avr-hal-template.git
-cd day-22
+cd day-20
 cargo run --release
 ```
 
